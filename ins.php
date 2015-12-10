@@ -116,24 +116,18 @@
                   <button type="button" class="btn btn-lg btn-primary" onclick="window.location.href='index.php'"><i class="fa fa-home fa-2x"></i></button>
               </div>   
          </div>
+          <br><br><br>
          <div class="row">
-            <div class="col-md-12">
-               <br><br><br>
-            </div>
-         </div>
-         <div class="row">
-          <div class="col-md-4">
-            </div>
-          <div class="col-md-4">
+          <div class="col-md-4 col-md-offset-4">
               <form class="form-inline" method="post" action="lib/write.php" role="form">
-                  <div class="row">
+                     <div class="row">
                         <div class="col-md-3">
                            <label for="nome">Nome:</label>
-                        </div>
+                        </div> 
                         <div class="col-md-9">
                            <input type="text" class="form-control" name="nomeA" id="nomeA" placeholder="Nome">
                         </div>
-                     </div>
+                     </div> <!-- nome-->
                      <div class="row">
                         <div class="col-md-3">
                            <label for="cognome">Cognome:</label>
@@ -141,7 +135,7 @@
                         <div class="col-md-9">
                            <input type="text" class="form-control" name="cognome" id="cognome" placeholder="Cognome">
                         </div>
-                     </div>
+                     </div> <!-- cognome-->
                      <div class="row">
                         <div class="col-md-3">
                            <label for="matricola">Matricola:</label>
@@ -149,7 +143,7 @@
                         <div class="col-md-9">
                            <input type="text" class="form-control" name="matricola" id="matricola" placeholder="Matricola">
                         </div>
-                     </div>
+                     </div> <!-- matricola-->
                      <div class="row">
                         <div class="col-md-3">
                            <label for="anno">Anno Scolastico:</label>
@@ -157,7 +151,7 @@
                         <div class="col-md-9">
                            <input type="text" class="form-control" name="anno" id="anno" placeholder="Anno Scolastico">
                         </div>
-                     </div>
+                     </div> <!-- anno solastico-->
                      <div class="row">
                         <div class="col-md-3">
                            <label for="asl">ASL:</label>
@@ -165,7 +159,7 @@
                         <div class="col-md-9">
                            <input type="text" class="form-control" name="asl" id="asl" placeholder="ASL">
                         </div>
-                     </div>
+                     </div> <!-- ASL-->
                      <div class="row">
                         <div class="col-md-3">
                            <label for="azienda">Azienda:</label>
@@ -173,7 +167,7 @@
                         <div class="col-md-9">
                            <input type="text" class="form-control" name="azienda" id="azienda" placeholder="Azienda">
                         </div>
-                     </div>
+                     </div> <!-- azienda-->
                      <div class="row">
                         <div class="col-md-3">
                            <label for="tutor">Tutor:</label>
@@ -181,29 +175,17 @@
                         <div class="col-md-9">
                            <input type="text" class="form-control" name="tutor" id="tutor" placeholder="Tutor">
                         </div>
-                     </div>
+                     </div> <!-- tutor-->
                      <div class="row">
-                        
                         <div class="col-md-4 col-md-offset-4">
                            <br><br>
                            <button  type="submit" class="btn btn-lg btn-primary" id ="invia">Inserisci</button>
                         </div>
-                     </div>
+                     </div> <!-- bottone invia-->
               </form>
            </div>
-         <div class="col-md-4">
-          </div>
          </div>
-          
-         <div class="row">
-		
-		<div class="col-md-4 col-md-offset-4" id="conferma">
-                    
-		</div>
-		<div class="col-md-4">
-		</div>
 	</div>    
-       
       </div>
    </body>
 </html>

@@ -55,69 +55,41 @@ and open the template in the editor.
     <body>
         <?php
             
-            
-            
             require("lib/file_sequenziali.php");
             
             session_start();
             $file = new file_sequenziali('File/ASL.csv');
             
-           
-            
             $_SESSION['File'] = $file;
             
         ?>
-            <div class="container-fluid">
+        <div class="container-fluid">
             <div class="row">
                     <div class="col-md-12">
                             <h1 id="title">Alternanza Scuola Lavoro</h1>
                             <br><br><br><br><br><br><br><br>
-                            <div class="row">
-                                    <div class="col-md-3">
-                                    </div>
-                                    <div class="col-md-3">
-                                    </div>
-                                    <div class="col-md-1">
-                                    </div>
-                                    <div class="col-md-3">
-                                    </div>
-                                    <div class="col-md-2">
-                                    </div>
-                            </div>
-                            <div class="row">
-                                    <div class="col-md-2">
-                                    </div>
-                                    <div class="col-md-3">
-
-                                            <button type="button" class="btn btn-lg btn-primary btn-block" onclick="window.location.href='rice.php'">
-                                                Ricerca &nbsp; <i class="fa fa-search fa-2x"></i>
-                                            </button>
-                                    </div>
-                                    <div class="col-md-2">
-                                    </div>
-                                    <div class="col-md-3">
-
-                                            <button type="button" class="btn btn-lg btn-primary btn-block" onclick="window.location.href='ins.php'">
-                                                Inserisci Studente &nbsp; <i class="fa fa-cog fa-2x"></i>
-                                            </button>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <br><br><br><br><br><br><br><br>
-                                    </div>
-                            </div> 
-                            
-                            
-                                <div class="row">
-                                    <div class="col-md-4">
-                                    </div>
-                                    <div class="col-md-4">
-                                        <img id="img" src="img\stage.jpg"/>
-                                    </div>
-                                    <div class="col-md-4">
-                                    </div>
-                            </div>
                     </div>
-             </div>
-    </div>
-</body> 
+            </div>  
+            
+            <div class="row">
+                    <div class="col-md-3 col-md-offset-2">
+                            <button type="button" class="btn btn-lg btn-primary btn-block" onclick="window.location.href='rice.php'">
+                                Ricerca &nbsp; <i class="fa fa-search fa-2x"></i>
+                            </button>
+                    </div>
+                    <div class="col-md-3 col-md-offset-2">
+                            <button type="button" class="btn btn-lg btn-primary btn-block" onclick="window.location.href='ins.php'">
+                                Inserisci Studente &nbsp; <i class="fa fa-cog fa-2x"></i>
+                            </button>
+                    </div>      
+            </div> 
+            <br><br><br><br><br><br><br><br>
+            
+            <div class="row">                
+                    <div class="col-md-4 col-md-offset-4">
+                        <img id="img" src="img\stage.jpg"/>
+                    </div>
+            </div>
+        </div>
+    </body> 
 </html>

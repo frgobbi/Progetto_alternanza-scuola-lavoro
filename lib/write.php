@@ -11,7 +11,7 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
         
-         <meta http-equiv="refresh" content="5;URL=http://localhost/ASL/ins.php">
+         <meta http-equiv="refresh" content="5;URL=../index.php">
         <style type="text/css">
             body {
                 background-color: #F4B183;
@@ -47,9 +47,10 @@
                $stringa = $matricola.";".$nome.";".$cognome.";".$anno.";".$asl.";".$azienda.";".$tutor."\n";
 
              $file->scrivi_dati('../File/ASL.csv',$stringa);
-            echo($stringa);   
+            
+            
             echo("<h3> Lo studente &egrave; stato registrato!</h3>");
-            echo("<h3>Riepilogo Dati: ".$stringa."</h3>");
+            
             echo("<h3>Reindirizzamento tra 5 secondi...</h3>");
            ?>
     </body>

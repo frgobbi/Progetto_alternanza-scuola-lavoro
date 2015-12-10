@@ -91,95 +91,63 @@ and open the template in the editor.
         </script>
     </head>
     <body>
-
-            <div class="container-fluid">
-                    <div class="row">
-            <div class="col-md-8">
-               <h1 id="title">
-                  <br>
-                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Alternanza Scuola Lavoro
-               </h1>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-8">
+                    <br>
+                    <h1 id="title"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Alternanza Scuola Lavoro </h1>
+                </div>
+                <div class="col-md-3">
+                   <br><br>
+                   <img id="img" src="img\stage.jpg"/>
+                </div>
+                <div class="col-md-1">
+                     <br>
+                     <button type="button" class="btn btn-lg btn-primary" onclick="window.location.href='index.php'"><i class="fa fa-home fa-2x"></i></button>
+                 </div>   
             </div>
-            <div class="col-md-3">
-               <br><br>
-               <img id="img" src="img\stage.jpg"/>
+
+            <br><br><br>
+
+            <div class="row">
+                <div class="col-md-3 col-md-offset-3">
+                    <form class="form-group">
+                        <select name="select[]" class="form-control" onchange=avviaChiamata()>
+                            <?php
+                                require("lib/file_sequenziali.php");
+                                session_start();
+
+                                $file = $_SESSION['File'];
+
+                                $array_mat=$file->preleva_matricole();
+
+                                $_SESSION['File'] = $file;
+
+                                echo "<option id=\"vuota\">Scegli...</option>";
+                                foreach ($array_mat as $elemento)
+                                {
+                                    echo "<option id=\"$elemento\">".$elemento."</option>";
+                                }
+                            ?>
+                        </select>
+                    </form>
+                </div>
+                <div class="col-md-3 col-md-offset-3">
+                    <div class="row"> <!--campi nome del utente selezionato (ulteriore step-->
+                            <div class="col-md-6">
+                            </div>
+                            <div class="col-md-6">
+                            </div>
+                    </div>
+                </div>
             </div>
-             <div class="col-md-1">
-                  <br>
-                  <button type="button" class="btn btn-lg btn-primary" onclick="window.location.href='index.php'"><i class="fa fa-home fa-2x"></i></button>
-              </div>   
-         </div>
-              <div class="row">
-                      <div class="col-md-12">
-                          <br><br><br>
-                      </div>
-              </div>
-              <div class="row">
-                      <div class="col-md-3">
-                      </div>
-                      <div class="col-md-3">
-                          <form class="form-group">
-                                 <select name="select[]" class="form-control" onchange=avviaChiamata()>
-                          <?php
-                              
-                              require("lib/file_sequenziali.php");
-                              session_start();
-                              
 
-
-                           
-                              $file = $_SESSION['File'];
-                              
-
-                              $array_mat=$file->preleva_matricole();
-                              
-                              
-                              
-                              $_SESSION['File'] = $file;
-
-                              
-
-                              
-                              echo "<option id=\"vuota\">Scegli...</option>";
-                              foreach ($array_mat as $elemento)
-                              {
-                                  echo "<option id=\"$elemento\">".$elemento."</option>";
-                              }
-
-
-
-                          ?>
-                      </select>
-                      </div>
-                      <div class="col-md-3">
-                      </div>
-                      <div class="col-md-3">
-                              <div class="row">
-                                      <div class="col-md-6">
-                                      </div>
-                                      <div class="col-md-6">
-                                      </div>
-                              </div>
-                      </div>
-              </div>
-
-
-              <div class="row">
-                      <div class="col-md-12">
-                          <br><br><br>
-                      </div>
-                     
-              </div>
-              <div class="row">
-                      <div class="col-md-1">
-                      </div>
-                      <div class="col-md-10" id="tabella">
-
-                      </div>
-                      <div class="col-md-1">
-                      </div>
-              </div>
-      </div> 
+            <div class="row">
+                <div class="col-md-10 col-md-offset-1" id="tabella">
+                    <!--Tabella popolata dinamicamente-->
+                </div>
+            </div>
+        </div> 
     </body>
 </html>
 		
