@@ -1,65 +1,52 @@
 
 <?php
 
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 require("file_sequenziali.php");
-session_start();
 
 $matricola=implode($_POST['select']);
 
 if(strcmp($matricola,"Scegli...")!=0)
 {
+   
 
-$file=$_SESSION['File'];
-
-
-
-$array_record=$file->ricerca_studenti($matricola);
-
-
-$htmlcode = '<table class="table table-bordered" id="tab">';
-
-
-  
-for($i=0;$i<count($array_record);$i++)
-{
-    $oreASL=0;
-    $htmlcode.='<tr>'."\n";
-    $campi = explode(";",$array_record[$i]);
-    $oreASL+=$campi[4];
     
-    foreach($campi as $campo)
+    $file = new file_sequenziali('../File/ASL.csv');
+    $matricola=implode($_POST['select']);
+    $array_record=$file->ricerca_studenti($matricola);
+
+    $intestazione=explode(";", $array_record[0]);
+
+    $htmlcode = '<table class="table table-bordered">';
+    $htmlcode.='<caption>DATI STUDENTE</caption>';
+    $htmlcode.='<thead>';
+    foreach($intestazione as $elemento)
     {
-        $htmlcode.= "   <td>".$campo."</td>"."\n";
-        
+        $htmlcode.='<th>'.$elemento.'</th>';
     }
-    $htmlcode.='</tr>';
-    
+    $htmlcode.='</thead>';
+    $htmlcode.='<tbody>';
+
+    for($i=1;$i<count($array_record);$i++)
+    {
+        $oreASL=0;
+        $htmlcode.='<tr>'."\n";
+        $campi = explode(";",$array_record[$i]);
+        $oreASL+=$campi[4];
+
+        foreach($campi as $campo)
+        {
+            $htmlcode.= "   <td>".$campo."</td>"."\n";
+
+        }
+        $htmlcode.='</tr>';
+
+    }
+
+    $htmlcode.='</tbody>';
+    $htmlcode.='</table>';
+
+    echo $htmlcode;
 }
-
-
-$htmlcode.='</table>';
-
-
-/*
-$htmlcode.='<tr>';
-$htmlcode.='<td>Ore totali ASL</td>';
-$htmlcode.='<td colspan=6>'.$oreASL.'</td>';
-$htmlcode.='</tr>';
- * 
- */
-
-echo $htmlcode;
-}
-
-
-
-
 
 ?>
 

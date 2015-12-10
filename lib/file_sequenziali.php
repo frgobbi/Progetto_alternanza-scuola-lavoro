@@ -46,7 +46,7 @@
             
         }
         
-        public function scrivi_dati($link,$stringa)
+        public static function scrivi_dati($link,$stringa)
         {
             $var=fopen($link,"a+");
             fwrite($var, $stringa);

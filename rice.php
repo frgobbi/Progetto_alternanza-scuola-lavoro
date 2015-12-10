@@ -42,11 +42,11 @@ and open the template in the editor.
                 background-color: #F4B183;
             }
                 
-            #title {
+            h1 {
                 color: #0066FF;
                 font-size: 80px;
                 font-family: Bradley Hand ITC;
-                text-align: left;
+                text-align: center;
                 font-weight: 900;
             }
             
@@ -59,6 +59,9 @@ and open the template in the editor.
             }
             #tab{
                 background-color: #ffffff;
+            }
+            #tabella{
+                padding-top:5%;
             }
         </style>
         
@@ -91,37 +94,34 @@ and open the template in the editor.
         </script>
     </head>
     <body>
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-md-8">
-                    <br>
-                    <h1 id="title"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Alternanza Scuola Lavoro </h1>
-                </div>
-                <div class="col-md-3">
-                   <br><br>
-                   <img id="img" src="img\stage.jpg"/>
-                </div>
-                <div class="col-md-1">
-                     <br>
-                     <button type="button" class="btn btn-lg btn-primary" onclick="window.location.href='index.php'"><i class="fa fa-home fa-2x"></i></button>
-                 </div>   
-            </div>
-
-            <br><br><br>
-
-            <div class="row">
-                <div class="col-md-3 col-md-offset-3">
+                    <div class="col-md-11">
+                    <h1>Alternanza Scuola Lavoro </h1>
+                    </div>
+                    <div class="col-md-1">
+                        <br><br>
+                    <button type="button" class="btn btn-lg btn-primary" onclick="window.location.href='index.html'"><i class="fa fa-home fa-2x"></i></button>
+                    </div>
+               
+                   
+            
+                
+                     <div class="col-md-4 col-md-offset-2">
+            
                     <form class="form-group">
-                        <select name="select[]" class="form-control" onchange=avviaChiamata()>
+                        <label for="select">Seleziona una matricola</label>
+                        <select id="select" name="select[]" class="form-control" onchange=avviaChiamata()>
+                            
                             <?php
                                 require("lib/file_sequenziali.php");
-                                session_start();
-
-                                $file = $_SESSION['File'];
+                                
+                                
+                                $file = new file_sequenziali('File/ASL.csv');
+                                //$_SESSION['File'] = $file;
+                               
 
                                 $array_mat=$file->preleva_matricole();
 
-                                $_SESSION['File'] = $file;
+                                
 
                                 echo "<option id=\"vuota\">Scegli...</option>";
                                 foreach ($array_mat as $elemento)
@@ -131,9 +131,20 @@ and open the template in the editor.
                             ?>
                         </select>
                     </form>
+                     </div>
+               
+                <div class="col-md-4">
+                <img id="img" src="img\stage.jpg"/>
                 </div>
+                
+                    
+                
+                
+                
+                
+                <!--
                 <div class="col-md-3 col-md-offset-3">
-                    <div class="row"> <!--campi nome del utente selezionato (ulteriore step-->
+                    <div class="row"> <!--campi nome del utente selezionato (ulteriore step
                             <div class="col-md-6">
                             </div>
                             <div class="col-md-6">
@@ -141,12 +152,12 @@ and open the template in the editor.
                     </div>
                 </div>
             </div>
-
-            <div class="row">
-                <div class="col-md-10 col-md-offset-1" id="tabella">
+                   -->
+          
+                <div class="col-md-8 col-md-offset-2" id="tabella">
                     <!--Tabella popolata dinamicamente-->
                 </div>
-            </div>
+         
         </div> 
     </body>
 </html>

@@ -11,7 +11,7 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
         
-         <meta http-equiv="refresh" content="5;URL=../index.php">
+         <meta http-equiv="refresh" content="5;URL=../ins.php">
         <style type="text/css">
             body {
                 background-color: #F4B183;
@@ -40,13 +40,13 @@
                $azienda = $_POST['azienda'];
                $tutor = $_POST['tutor'];
 
-               session_start();
+               //session_start();
 
-               $file = $_SESSION['File'];
+               //$file = $_SESSION['File'];
 
                $stringa = $matricola.";".$nome.";".$cognome.";".$anno.";".$asl.";".$azienda.";".$tutor."\n";
 
-             $file->scrivi_dati('../File/ASL.csv',$stringa);
+             file_sequenziali::scrivi_dati('../File/ASL.csv',$stringa);
             
             
             echo("<h3> Lo studente &egrave; stato registrato!</h3>");
