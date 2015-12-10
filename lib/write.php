@@ -10,17 +10,8 @@
         <!-- Latest compiled and minified JavaScript -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-        
-         <meta http-equiv="refresh" content="5;URL=../ins.php">
-        <style type="text/css">
-            body {
-                background-color: #F4B183;
-            }
-            h3 {
-                color: #0066FF;
-                text-align:center;
-            }
-        </style>
+        <link rel="stylesheet" href="../CSS/regole.css">
+        <meta http-equiv="refresh" content="5;URL=../ins.php">
     </head>
     <body>
         <?php
@@ -49,9 +40,9 @@
              file_sequenziali::scrivi_dati('../File/ASL.csv',$stringa);
             
             
-            echo("<h3> Lo studente &egrave; stato registrato!</h3>");
+            echo("<h3 id=\"red\"> Lo studente &egrave; stato registrato!</h3>");
             
-            echo("<h3>Reindirizzamento tra 5 secondi...</h3>");
+            echo("<h3 id=\"red\">Reindirizzamento tra 5 secondi...</h3>");
            ?>
     </body>
 </html>

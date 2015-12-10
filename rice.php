@@ -20,6 +20,8 @@ and open the template in the editor.
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="./lib/font-awesome-4.5.0/css/font-awesome.css">
         <link rel="stylesheet" href="./lib/font-awesome-4.5.0/css/font-awesome.min.css">
+        
+        <link rel="stylesheet" href="./CSS/regole.css">
          <style type="text/css">
         @font-face {
             font-family: "myfont";
@@ -38,31 +40,6 @@ and open the template in the editor.
             src: url('./lib/font-awesome-4.5.0/fonts/fontawesome-webfont.ttf') format('truetype');
             ;
         }
-            body {
-                background-color: #F4B183;
-            }
-                
-            h1 {
-                color: #0066FF;
-                font-size: 80px;
-                font-family: Bradley Hand ITC;
-                text-align: center;
-                font-weight: 900;
-            }
-            
-            table{
-                text-align:center;
-            }
-            img {
-                height: 210px;
-                width: 373px;
-            }
-            #tab{
-                background-color: #ffffff;
-            }
-            #tabella{
-                padding-top:5%;
-            }
         </style>
         
         <script type="text/javascript">
