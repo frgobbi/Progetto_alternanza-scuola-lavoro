@@ -15,11 +15,11 @@ $matricola=implode($_POST['select']);
 if(strcmp($matricola,"Scegli...")!=0)
 {
 
-$oggetto=$_SESSION['oggetto'];
+$file=$_SESSION['File'];
 
 
 
-$array_record=$oggetto->ricerca_studenti($matricola);
+$array_record=$file->ricerca_studenti($matricola);
 
 
 $htmlcode = '<table class="table table-bordered" id="tab">';

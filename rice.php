@@ -50,14 +50,6 @@ and open the template in the editor.
                 font-weight: 900;
             }
             
-            h3{
-                color: #0066FF;
-                    font-size: 36px;
-                    font-family: Bradley Hand ITC;
-                    text-align:center;
-                    font-weight: 900;
-            }
-            
             table{
                 text-align:center;
             }

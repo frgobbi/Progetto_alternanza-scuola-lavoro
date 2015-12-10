@@ -57,35 +57,43 @@
       </style>
       
       <script type="text/javascript">
-            var link='lib/ricerca.php';
-            
-            console.log(link);
-            var dati;
-            function avviaChiamata()
-            {
-                dati = $('form').serialize();
-                console.log(dati);
+            $(document).ready(function() {
+
+              //al click sul bottone del form
+              $("#invia").click(function(){
+
+                //associo variabili
+                var nome = $("#nome").val();
+                var mansione = $("#mansione").val();
+
+              //chiamata ajax
                 $.ajax({
-                    //Type of Ajax call (GET).
-                    type: "POST",
-                    //URL of the php resource, that generate the data of the chart.
-                    url: link,
-                    timeout:5000,
-                    data: dati,
-                    success: function(response)
-                    {
-                        console.log(dati);
-                        console.log(response);
-                        
-                        $("#conferma").html(response);
-                    },
-                    error: function(){
-                            //If there are some problems with the Ajax call a message error will be generated.
-                            alert("Si e' verificato un errore con la chiamata Ajax, impossibile trovare file! "+link);
-                    },
+
+                 //imposto il tipo di invio dati (GET O POST)
+                  type: "POST",
+
+                  //Dove devo inviare i dati recuperati dal form?
+                  url: "lib/write.php",
+
+                  //Quali dati devo inviare?
+                  
+                  data: "nome=" + nome + "cognome=" + cognome + "matricola=" + matricola + "anno=" + anno + "asl=" + asl + "azienda=" + azienda + "tutor=" + tutor,
+                  dataType: "html",
+
+                  //Inizio visualizzazione errori
+                  success: function(response)
+                  {
+                      console.log("successo");
+                    $("#tabella").html(response);
+                  },
+                  error: function()
+                  {
+                    alert("Chiamata fallita, si prega di riprovare..."); //sempre meglio impostare una callback in caso di fallimento
+                  }
                 });
-            }
-        </script>
+              });
+            });
+</script>
    </head>
    <body>
       <div class="container-fluid">
@@ -115,13 +123,13 @@
           <div class="col-md-4">
             </div>
           <div class="col-md-4">
-              <form class="form-inline" method="POST" role="form">
+              <form class="form-inline" method="post" action="lib/write.php" role="form">
                   <div class="row">
                         <div class="col-md-3">
                            <label for="nome">Nome:</label>
                         </div>
                         <div class="col-md-9">
-                           <input type="text" class="form-control" id="nome" placeholder="Nome">
+                           <input type="text" class="form-control" name="nome" id="nome" placeholder="Nome">
                         </div>
                      </div>
                      <div class="row">
@@ -129,7 +137,7 @@
                            <label for="cognome">Cognome:</label>
                         </div>
                         <div class="col-md-9">
-                           <input type="text" class="form-control" id="cognome" placeholder="Cognome">
+                           <input type="text" class="form-control" name="cognome" id="cognome" placeholder="Cognome">
                         </div>
                      </div>
                      <div class="row">
@@ -137,7 +145,7 @@
                            <label for="matricola">Matricola:</label>
                         </div>
                         <div class="col-md-9">
-                           <input type="text" class="form-control" id="matricola" placeholder="Matricola">
+                           <input type="text" class="form-control" name="matricola" id="matricola" placeholder="Matricola">
                         </div>
                      </div>
                      <div class="row">
@@ -145,7 +153,7 @@
                            <label for="anno">Anno Scolastico:</label>
                         </div>
                         <div class="col-md-9">
-                           <input type="text" class="form-control" id="anno" placeholder="Anno Scolastico">
+                           <input type="text" class="form-control" name="anno" id="anno" placeholder="Anno Scolastico">
                         </div>
                      </div>
                      <div class="row">
@@ -153,13 +161,7 @@
                            <label for="asl">ASL:</label>
                         </div>
                         <div class="col-md-9">
-                           <input type="text" class="form-control" id="asl" placeholder="ASL">
-                        </div>
-                     </div>
-                     <div class="row">
-                        <div class="col-md-3">
-                        </div>
-                        <div class="col-md-9">
+                           <input type="text" class="form-control" name="asl" id="asl" placeholder="ASL">
                         </div>
                      </div>
                      <div class="row">
@@ -167,7 +169,7 @@
                            <label for="azienda">Azienda:</label>
                         </div>
                         <div class="col-md-9">
-                           <input type="text" class="form-control" id="azienda" placeholder="Azienda">
+                           <input type="text" class="form-control" name="azienda" id="azienda" placeholder="Azienda">
                         </div>
                      </div>
                      <div class="row">
@@ -175,14 +177,14 @@
                            <label for="tutor">Tutor:</label>
                         </div>
                         <div class="col-md-9">
-                           <input type="text" class="form-control" id="tutor" placeholder="Tutor">
+                           <input type="text" class="form-control" name="tutor" id="tutor" placeholder="Tutor">
                         </div>
                      </div>
                      <div class="row">
                         
                         <div class="col-md-4 col-md-offset-4">
                            <br><br>
-                           <button onclick=avviaChiamata() class="btn btn-lg btn-primary" id ="invia">Inserisci</button>
+                           <button class="btn btn-lg btn-primary" id ="invia">Inserisci</button>
                         </div>
                      </div>
               </form>
