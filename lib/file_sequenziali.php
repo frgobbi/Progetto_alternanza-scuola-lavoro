@@ -48,9 +48,9 @@
         
         public function scrivi_dati($link,$stringa)
         {
-            $file=fopen($link,"w");
-            fwrite($file, $stringa);
-            fclose($file);
+            $var=fopen($link,"a+");
+            fwrite($var, $stringa);
+            fclose($var);
         }
         
         public function suddividi($index)

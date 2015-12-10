@@ -77,7 +77,7 @@
 
                   //Quali dati devo inviare?
                   
-                  data: "nome=" + nome + "cognome=" + cognome + "matricola=" + matricola + "anno=" + anno + "asl=" + asl + "azienda=" + azienda + "tutor=" + tutor,
+                  data: "matricola=" + matricola + "nome=" + nomeA + "cognome=" + cognome + "anno=" + anno + "asl=" + asl + "azienda=" + azienda + "tutor=" + tutor,
                   dataType: "html",
 
                   //Inizio visualizzazione errori
@@ -129,7 +129,7 @@
                            <label for="nome">Nome:</label>
                         </div>
                         <div class="col-md-9">
-                           <input type="text" class="form-control" name="nome" id="nome" placeholder="Nome">
+                           <input type="text" class="form-control" name="nomeA" id="nomeA" placeholder="Nome">
                         </div>
                      </div>
                      <div class="row">
