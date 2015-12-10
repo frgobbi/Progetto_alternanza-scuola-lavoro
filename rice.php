@@ -127,14 +127,13 @@ and open the template in the editor.
                               
 
 
-                              //$oggetto = new file_sequenziali("File/ASL.csv");
-
+                           
                               $file = $_SESSION['File'];
                               
 
                               $array_mat=$file->preleva_matricole();
                               
-                              //setcookie('File',$file);
+                              
                               
                               $_SESSION['File'] = $file;
 

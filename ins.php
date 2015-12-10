@@ -57,6 +57,7 @@
       </style>
       
       <script type="text/javascript">
+          /*
             $(document).ready(function() {
 
               //al click sul bottone del form
@@ -93,6 +94,7 @@
                 });
               });
             });
+            */
 </script>
    </head>
    <body>
@@ -184,7 +186,7 @@
                         
                         <div class="col-md-4 col-md-offset-4">
                            <br><br>
-                           <button class="btn btn-lg btn-primary" id ="invia">Inserisci</button>
+                           <button  type="submit" class="btn btn-lg btn-primary" id ="invia">Inserisci</button>
                         </div>
                      </div>
               </form>
