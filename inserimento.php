@@ -1,0 +1,160 @@
+<html>
+   <head>
+      <title>Inserimento_Alunni</title>
+      <!-- jQuery library -->
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+      <!-- Latest compiled JavaScript -->
+      <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+      <!-- Bootstrap library -->
+      <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+      <!-- Font awesome library -->
+      <link rel="stylesheet" href="controller/font-awesome-4.5.0/css/font-awesome.css">
+      <link rel="stylesheet" href="controller/font-awesome-4.5.0/css/font-awesome.min.css">
+      
+      <!-- Collegamento al file contenente tutte le regole CSS -->
+      <link rel="stylesheet" href="./CSS/regole.css">
+      
+      <script type="text/javascript">
+        /*Funzione "validateForm(), utilizzata per verificare che l'utente abbia
+         * immesso tutti i campi necessari alla registrazione di un nuovo
+         * studente.
+         */
+        function validateForm() 
+        {
+           var nome = document.forms["form"]["nomeA"].value;
+           var cognome = document.forms["form"]["cognome"].value;
+           var matricola = document.forms["form"]["matricola"].value;
+           var anno = document.forms["form"]["anno"].value;
+           var asl = document.forms["form"]["asl"].value;
+           var azienda = document.forms["form"]["azienda"].value;
+           var tutor = document.forms["form"]["tutor"].value;
+           //Verifica della correttezza dei valori immessi.
+           if ((nome == null || nome == "") || (cognome == null || cognome == "") || (matricola == null || matricola == "") || (anno == null || anno == "") || (asl == null || asl == "") || (azienda == null || azienda == "") || (tutor == null || tutor == "")){
+                /*Nel caso in cui l'utente abbia tralasciato un campo 
+                 * la funzione restituirà un messaggio di errore.
+                 */
+                alert("Accertarsi di aver compilato tutti i campi!");
+                /*La funzione, ritornando valore falso, fa si che i dati non 
+                 * vengano inoltrati alla pagine php indicata nell'attributo
+                 * action della form definita in html.
+                 */
+                return false;
+            }
+        }
+      </script>
+      <style type="text/css">
+        @font-face {
+            font-family: "myfont";
+            src: url("controller/font-awesome-4.5.0/fonts/fontawesome-webfont.woff") format('woff');
+            font-weight: bold;
+        }
+        
+        @font-face {
+            font-family: "myfont";
+            src: url("controller/font-awesome-4.5.0/fonts/fontawesome-webfont.woff2") format('woff2');
+            font-weight: bold;
+        }
+        
+        @font-face {
+            font-family: 'font_name';
+            src: url('controller/font-awesome-4.5.0/fonts/fontawesome-webfont.ttf') format('truetype');
+            ;
+        }
+         
+         
+      </style>
+   </head>
+   <body>
+      
+          
+        
+            <div class="col-md-11">
+               <h1>Alternanza Scuola Lavoro</h1>
+            </div>
+            <div class="col-md-1">
+                <br><br>
+                  <button type="button" class="btn btn-lg btn-primary" onclick="window.location.href='index.html'"><i class="fa fa-home fa-2x"></i></button>
+               
+            </div>
+             
+        
+        
+          <div class="col-md-4 col-md-offset-2">
+              <form class="form-inline" method="post" action="controller/write.php" role="form" name="form" onsubmit="return validateForm()">
+                     <div class="row">
+                        <div class="col-md-3">
+                           <label for="nome">Nome:</label>
+                        </div> 
+                        <div class="col-md-9">
+                           <input type="text" class="form-control" name="nomeA" id="nomeA" placeholder="Nome">
+                        </div>
+                     </div> <!-- nome-->
+                     <div class="row">
+                        <div class="col-md-3">
+                           <label for="cognome">Cognome:</label>
+                        </div>
+                        <div class="col-md-9">
+                           <input type="text" class="form-control" name="cognome" id="cognome" placeholder="Cognome">
+                        </div>
+                     </div> <!-- cognome-->
+                     <div class="row">
+                        <div class="col-md-3">
+                           <label for="matricola">Matricola:</label>
+                        </div>
+                        <div class="col-md-9">
+                           <input type="text" class="form-control" name="matricola" id="matricola" placeholder="Matricola">
+                        </div>
+                     </div> <!-- matricola-->
+                     <div class="row">
+                        <div class="col-md-3">
+                           <label for="anno">Anno Scolastico:</label>
+                        </div>
+                        <div class="col-md-9">
+                           <input type="text" class="form-control" name="anno" id="anno" placeholder="Anno Scolastico">
+                        </div>
+                     </div> <!-- anno solastico-->
+                     <div class="row">
+                        <div class="col-md-3">
+                           <label for="asl">Ore  ASL:</label>
+                        </div>
+                        <div class="col-md-9">
+                           <input type="text" class="form-control" name="asl" id="asl" placeholder="ASL">
+                        </div>
+                     </div> <!-- ASL-->
+                     <div class="row">
+                        <div class="col-md-3">
+                           <label for="azienda">ID Azienda:</label>
+                        </div>
+                        <div class="col-md-9">
+                           <input type="text" class="form-control" name="azienda" id="azienda" placeholder="Azienda">
+                        </div>
+                     </div> <!-- azienda-->
+                     <div class="row">
+                        <div class="col-md-3">
+                           <label for="tutor">ID Tutor:</label>
+                        </div>
+                        <div class="col-md-9">
+                           <input type="text" class="form-control" name="tutor" id="tutor" placeholder="Tutor">
+                        </div>
+                     </div> <!-- tutor-->
+                     <div class="row">
+                        <div class="col-md-4 col-md-offset-4">
+                           <br><br>
+                           <button  type="submit" class="btn btn-lg btn-primary" id ="invia">Inserisci</button>
+                        </div>
+                     </div> <!-- bottone invia-->
+              </form>
+           </div>
+         </div>
+	
+        
+         <div class="col-md-4">
+                 <img id="img" src="img\stage.jpg"/>
+                  
+              </div>  
+        
+        
+     
+   </body>
+</html>

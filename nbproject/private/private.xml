@@ -2,11 +2,8 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
-        <group name="XAMPP">
-            <file>file:/C:/xampp/htdocs/esercizi/PhpProgetto2/lib/ricerca.php</file>
-            <file>file:/C:/xampp/htdocs/esercizi/PhpProgetto2/rice.php</file>
-            <file>file:/C:/xampp/htdocs/esercizi/PhpProgetto2/ins.php</file>
+        <group>
+            <file>file:/C:/xampp/htdocs/Alternanza_Scuola_Lavoro/controller/genera_tooltip.php</file>
         </group>
     </open-files>
 </project-private>
