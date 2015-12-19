@@ -68,6 +68,28 @@ and open the template in the editor.
                     },
                 });
             }
+            
+            function GPopup() {
+                console.log("CIAO!");
+               $('#overlay').fadeIn('slow');
+               $('#popupBox').fadeIn('slow');
+               //$('#map').off('click');
+               //funzione che permette di chiudere il popup
+               $('#overlay, .deleteMeetingCancel').click(function() {
+               $('#overlay').fadeOut('slow');
+               $('#popupBox').fadeOut('slow');
+               $('#popupContent').fadeOut('slow');
+                  //sblocca il mvimento della mappa
+                   //map.dragging.enable();
+               });
+               //blocca il movimento della mappa
+               //map.dragging.disable();
+           }
+            
+            function visualizza(){
+                console.log("ciao sono arrivato qui");
+                //$("[data-toggle='tooltip']").tooltip();
+            }
         </script>
     </head>
     <body>
@@ -113,28 +135,14 @@ and open the template in the editor.
                 <div class="col-md-4">
                 <img id="img" src="img\stage.jpg"/>
                 </div>
-                
-                    
-                
-                
-                
-                
-                <!--
-                <div class="col-md-3 col-md-offset-3">
-                    <div class="row"> <!--campi nome del utente selezionato (ulteriore step
-                            <div class="col-md-6">
-                            </div>
-                            <div class="col-md-6">
-                            </div>
-                    </div>
-                </div>
-            </div>
-                   -->
+
           
                 <div class="col-md-8 col-md-offset-2" id="tabella">
                     <!--Tabella popolata dinamicamente-->
                 </div>
-         
+                
+                <div id="popupBox"></div>
+                <div id="overlay"></div>
         </div> 
     </body>
 </html>

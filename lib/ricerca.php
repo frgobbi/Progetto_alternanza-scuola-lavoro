@@ -35,7 +35,7 @@ if(strcmp($matricola,"Scegli...")!=0)
 
         foreach($campi as $campo)
         {
-            $htmlcode.= "   <td>".$campo."</td>"."\n";
+            $htmlcode.= "   <td  onclick=GPopup() >".$campo."</td>"."\n";
 
         }
         $htmlcode.='</tr>';

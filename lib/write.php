@@ -11,7 +11,7 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="../CSS/regole.css">
-        <meta http-equiv="refresh" content="5;URL=../ins.php">
+        <meta http-equiv="refresh" content="5;URL=../index.html">
     </head>
     <body>
         <?php
