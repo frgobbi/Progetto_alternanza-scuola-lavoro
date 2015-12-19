@@ -7,7 +7,10 @@
 //Collegamento alla pagine php contenente la classe "file sequenziali".
 require("file_sequenziali.php");
 
-//$matricola=implode($_POST['select']);
+/*Salvataggio della matricola inviata tramite la form all'interno della 
+    * variabile "$matricola".
+    */
+$matricola=implode($_POST['select']);
 
 /*Definizione delle operazioni da eseguire nel caso in cui l'utente abbia
  * scelto una matricola dalla select.
@@ -18,10 +21,7 @@ if(strcmp($matricola,"Scegli...")!=0)
      * "file_sequenziali().
      */
     $file = new file_sequenziali('../File/ASL.csv');
-    /*Salvataggio della matricola inviata tramite la form all'interno della 
-    * variabile "$matricola".
-    */
-    $matricola=implode($_POST['select']);
+
     /*Ottenimento dell'array contenente i vari record del file tramite il metodo
      * "ricerca_studenti().
      */
