@@ -50,31 +50,6 @@ and open the template in the editor.
             {
                 $(pulsante).tooltip("disable");
             }
-            /*Funzione avviaChiamata(): questa funzione consente di avviare la
-             * chiamata "Ajax" che farà sì che la tabella restituita dal file
-             * "ricerca.php" venga inserita in un'apposita "div", con 
-             * id "tabella", definita nel codice html della pagina.
-             */
-            function avviaChiamata()
-            {
-                dati = $('form').serialize();
-                $.ajax({
-                    //Type of Ajax call (GET).
-                    type: "POST",
-                    //URL of the php resource, that generate the data of the chart.
-                    url: link,
-                    timeout:5000,
-                    data: dati,
-                    success: function(response)
-                    {
-                        $("#tabella").html(response);
-                    },
-                    error: function(){
-                            //If there are some problems with the Ajax call a message error will be generated.
-                            alert("Si e' verificato un errore con la chiamata Ajax, impossibile trovare file!");
-                    },
-                });
-            }
         </script>
     </head>
     <body>
@@ -86,42 +61,133 @@ and open the template in the editor.
             <button type="button" class="btn btn-lg btn-primary" onclick="window.location.href='index.html'"><i class="fa fa-home fa-2x"></i></button>
         </div>
         <div class="col-md-4 col-md-offset-2">
-            <form class="form-group">
+            <form class="form-group" action=ricerca_matricole.php method="POST">
                 <label for="select">Seleziona una matricola</label>
-                <select id="select" name="select[]" class="form-control" onchange=avviaChiamata()>
+                <select id="select" name="select[]" class="form-control" onchange=submit()>
                     <?php
-                        /*Il seguente frammento di codice php consente di 
-                         * popolare la select delle matricole.
-                         */
-                        
-                        /*Collegamento della pagina contenente la classe
-                         * "file_sequenziali".
-                         */
-                        require("controller/file_sequenziali.php");
-                        /*Creazione di un oggetto appartenente alla classe
-                         * "file_sequenziali" ($file).
-                         */
-                        $file = new file_sequenziali('File/ASL.csv');
-                        /*Salvataggio delle matricole in un array chiamato
-                         * "array_mat".
-                         */
-                        $array_mat=$file->preleva_matricole();
-                        //Stampa dei differenti elementi della select.
-                        echo "<option id=\"vuota\">Scegli...</option>";
-                        foreach ($array_mat as $elemento)
+                        function generaTooltip($id)
                         {
-                            echo "<option id=\"$elemento\">".$elemento."</option>";
+                            $string ="TOOLTIP DI PROVA"."\n";
+                            $string.="L'azienda selezionata ha ID: ".$id;
+                            return  $string;
                         }
+                        function generaTabella($matricola,$file)
+                        {
+                            /*Definizione delle operazioni da eseguire nel caso in cui l'utente abbia
+                             * scelto una matricola dalla select.
+                             */
+                            if(strcmp($matricola,"Scegli...")!=0)
+                            {
+                                /*Ottenimento dell'array contenente i vari record del file tramite il metodo
+                                * "ricerca_studenti().
+                                */
+                                $array_record=$file->ricerca_studenti($matricola);
+                                /*Ottenimento dei vari campi che compongono l'intestazione della tabella
+                                * tramite la funzione "explode()".
+                                */
+                                $intestazione=explode(";", $array_record[0]);
+                                //-----Definizione del codice html della tabella.-----
+                                $htmlcode = '<table class="table table-bordered">';
+                                $htmlcode.='<caption>DATI STUDENTE</caption>';
+                                /*Definizione dell'intestazione della tabella.*/
+                                $htmlcode.='<thead>';
+                                foreach($intestazione as $elemento)
+                                {
+                                    $htmlcode.='<th>'.$elemento.'</th>';
+                                }
+                                $htmlcode.='</thead>';
+                                $htmlcode.='<tbody>';
+                                //Popolamento della tabella per riga.
+                                for($i=1;$i<count($array_record);$i++)
+                                {
+                                    //$oreASL=0;
+                                    $htmlcode.='<tr>'."\n";
+                                    $campi = explode(";",$array_record[$i]);
+                                    //$oreASL+=$campi[4];
+                                    //Popolamento dei campi della tabella.
+                                    for($j=0;$j<count($campi);$j++)
+                                    {
+                                        /*Il controllo serve a definire su quali campi dovrà essere gestito
+                                        * il tooltip, in particolare sui campi che riportano l'ID
+                                        * dell'azienda.
+                                        */
+                                        if($j==3)
+                                        {
+                                            $htmlcode.= "<td class=\"cella\">".$campi[$j]."<br>"."<button onclick=apriTooltip(this) onmouseout=chiudiTooltip(this) data-title=\"".generaTooltip($campi[$j])."\" class=\"btn btn-info btn-block\"><i class=\"fa fa-info\"></i></button>"."</td>"."\n";
+                                        }
+                                        else
+                                        {
+                                            $htmlcode.='<td>'.$campi[$j].'</td>'."\n";
+                                        }
+                                    }
+                                    //Chiusura della riga.
+                                    $htmlcode.='</tr>';
+                                }
+                                //Chiusura del corpo della tabella.
+                                $htmlcode.='</tbody>';
+                                //Chiusura della tabella.
+                                $htmlcode.='</table>';
+                                //La pagine restituisce il codice html di tutta la tabella.
+                                echo $htmlcode;
+                            }
+                        }
+                        /*Funzione utilizzata per generare alcuni dei contenuti
+                         * della pagina tra cui la select e la div contenente
+                         * l'immagine.
+                         */
+                        function generaContenuti()
+                        {
+                            /*Il seguente frammento di codice php consente di 
+                             * popolare la select delle matricole.
+                            */
+                            /*Collegamento della pagina contenente la classe
+                            * "file_sequenziali".
+                            */
+                            require("controller/file_sequenziali.php");
+                            /*Creazione di un oggetto appartenente alla classe
+                            * "file_sequenziali" ($file).
+                            */
+                            $file = new file_sequenziali('File/ASL.csv');
+                            /*Salvataggio delle matricole in un array chiamato
+                            * "array_mat".
+                            */
+                            $array_mat=$file->preleva_matricole();
+                            //Stampa dei differenti elementi della select.
+                            echo "<option id=\"vuota\">Scegli...</option>";
+                            foreach ($array_mat as $elemento)
+                            {
+                                $opzione = '<option';            
+                                if(isset($_POST['select']))
+                                {
+                                    if(strcmp($elemento,implode($_POST['select']))==0)
+                                    {
+                                        $opzione.=" "."selected";
+                                    }
+                                }    
+                                $opzione.= " value=\"$elemento\">".$elemento."</option>"."\n";
+                                echo $opzione;
+                            }
+                            /*Chiusra della select e della relativa form.*/
+                            echo ("</select>");
+                            echo ("</form>");
+                            echo("</div>");
+                            /*Stampa della div contenente l'immagine.*/
+                            echo ("<div class=\"col-md-4\">");
+                            echo ("<img id=\"img\" src=\"http://francescobinucci.altervista.org/progetto2/img/stage.jpg\"/>");
+                            echo ("</div>");
+                            /*Se l'utente ha selezionato una delle opzioni
+                             * dalla select verrà generata la tabella.
+                             */
+                            if(isset($_POST['select']))
+                            {
+                                echo ("<div class=\"col-md-8 col-md-offset-2\" id=\"tabella\">");
+                                generaTabella(implode($_POST['select']),$file);
+                                echo ("</div>");             
+                            }
+                        }  
+                        //Invocazione della funzione "generaContenuti".
+                        generaContenuti();
                     ?>
-                </select>
-            </form>
-        </div>
-        <div class="col-md-4">
-            <img id="img" src="http://francescobinucci.altervista.org/progetto2/img/stage.jpg"/>
-        </div>
-        <div class="col-md-8 col-md-offset-2" id="tabella">
-                 <!--Tabella popolata dinamicamente-->
-        </div>
     </body>
 </html>
 		
