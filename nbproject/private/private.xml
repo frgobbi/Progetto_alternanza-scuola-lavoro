@@ -3,12 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/xampp/htdocs/Alternanza_Scuola_Lavoro/index.html</file>
             <file>file:/C:/xampp/htdocs/Alternanza_Scuola_Lavoro/inserimento.php</file>
             <file>file:/C:/xampp/htdocs/Alternanza_Scuola_Lavoro/ricerca_matricole.php</file>
-            <file>file:/C:/xampp/htdocs/Alternanza_Scuola_Lavoro/controller/ricerca.php</file>
-            <file>file:/C:/xampp/htdocs/Alternanza_Scuola_Lavoro/controller/genera_tooltip.php</file>
-            <file>file:/C:/xampp/htdocs/Alternanza_Scuola_Lavoro/CSS/regole.css</file>
+            <file>file:/C:/xampp/htdocs/Alternanza_Scuola_Lavoro/Controller/ricerca.php</file>
         </group>
     </open-files>
 </project-private>

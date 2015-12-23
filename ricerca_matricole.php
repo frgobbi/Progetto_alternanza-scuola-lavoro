@@ -8,51 +8,48 @@ and open the template in the editor.
     <head>
         <meta charset="UTF-8">
         <title>Ricerca_Matricole</title>
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
         <!-- jQuery library -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-        <!-- Latest compiled JavaScript -->
-        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-        <!-- Bootstrap library -->
-        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
         <!-- Font awesome library -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-        <link rel="stylesheet" href="controller/font-awesome-4.5.0/css/font-awesome.css">
-        <link rel="stylesheet" href="controller/font-awesome-4.5.0/css/font-awesome.min.css">
-        <!-- Collegamento al file contenente tutte le regole CSS -->
+        <!-- Collegamento al file contenente le regole CSS -->
         <link rel="stylesheet" href="./CSS/regole.css">
         <!-- jQuery User Interface (jQuery UI) library -->
         <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 	<link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-        <style type="text/css">
-        @font-face {
-            font-family: "myfont";
-            src: url("controller/font-awesome-4.5.0/fonts/fontawesome-webfont.woff") format('woff');
-            font-weight: bold;
-        }
-        
-        @font-face {
-            font-family: "myfont";
-            src: url("controller/font-awesome-4.5.0/fonts/fontawesome-webfont.woff2") format('woff2');
-            font-weight: bold;
-        }
-        
-        @font-face {
-            font-family: 'font_name';
-            src: url('controller/font-awesome-4.5.0/fonts/fontawesome-webfont.ttf') format('truetype');
-            ;
-        }
-        </style>
-        
         <script type="text/javascript">
-            var link='controller/ricerca.php';
+            var link='Controller/ricerca.php';
             var dati;
-            /*Funzione messa a disposizione dalla libreria jQuery User Interface
-             * che consente di visualizzare i tooltip con i dati relativi alle
-             * aziende al passaggio con il mouse sulle rispettive celle.
+            var descrizione;
+            /*Funzione "apriTooltip()", necessaria per la visualizzazione dei
+             * tooltip contenenti le informazioni sull'azienda.
              */
-            $(function() {
-		$( document ).tooltip();
-            });
+            function apriTooltip(pulsante)
+            {
+                /*Il testo del tooltip viene ricavato dal valore dell'attributo
+                * "data-title" dell'elemento html.
+                */
+               descrizione = pulsante.getAttribute('data-title')
+               /*Quando l'utente clicca sull'elemento html interessato, viene
+                * fatto apparire il tooltip.
+                */
+               $(pulsante).tooltip({ items: ".cella",content: descrizione});
+               $(pulsante).tooltip("open");
+                
+            }
+            /*Funzione "chiudiTooltip()".Quando l'utente porta il puntatore del 
+             * mouse fuori dal tooltip esso viene nascosto.
+             */
+            function chiudiTooltip(pulsante)
+            {
+                $(pulsante).tooltip("disable");
+            }
             /*Funzione avviaChiamata(): questa funzione consente di avviare la
              * chiamata "Ajax" che farà sì che la tabella restituita dal file
              * "ricerca.php" venga inserita in un'apposita "div", con 
@@ -120,7 +117,7 @@ and open the template in the editor.
             </form>
         </div>
         <div class="col-md-4">
-            <img id="img" src="img\stage.jpg"/>
+            <img id="img" src="http://francescobinucci.altervista.org/progetto2/img/stage.jpg"/>
         </div>
         <div class="col-md-8 col-md-offset-2" id="tabella">
                  <!--Tabella popolata dinamicamente-->

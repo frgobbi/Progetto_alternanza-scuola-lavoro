@@ -72,7 +72,7 @@ function generaTabella()
                  */
                 if($j==3)
                 {
-                    $htmlcode.= "<td class=\"test\" title=\"".generaTooltip($campi[$j])."\">".$campi[$j]."</td>"."\n";
+                    $htmlcode.= "<td class=\"cella\">".$campi[$j]."<br>"."<button onclick=apriTooltip(this) onmouseout=chiudiTooltip(this) data-title=\"".generaTooltip($campi[$j])."\" class=\"btn btn-info btn-block\"><i class=\"fa fa-info\"></i></button>"."</td>"."\n";
                 }
                 else
                 {
